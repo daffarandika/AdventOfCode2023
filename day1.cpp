@@ -10,7 +10,7 @@ using std::cout, std::cin, std::string, std::vector;
 
 int main () {
   vector<int> calibrationValue; 
-  std::freopen("day1-input.txt", "r", stdin); // set the input so that it accepts ./day1-input.txt as the input, instead of the command prompt
+  std::freopen("day1-input.txt", "r", stdin); // set the input so that it accepts ./day1-input.txt as the input (file omitted from repo), instead of the command prompt
    
   // for every line of ./day1-input.txt
   string s;
