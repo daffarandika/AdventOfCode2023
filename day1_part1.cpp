@@ -1,4 +1,4 @@
-// ADVENT OF CODE 2023 DAY 1
+// ADVENT OF CODE 2023 DAY 1 PART 1
 // https://adventofcode.com/2023/day/1
   
 #include <iostream> // std::cout and std::cin
