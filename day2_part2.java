@@ -1,19 +1,28 @@
+// ADVENT OF CODE 2023 DAY 2 PART 2
+// https://adventofcode.com/2023/day/2#part2
+
 import java.util.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class day2_part1 {
+public class day2_part2 {
   public static void main(String[] args) {
-    final int LIMIT_RED = 12;
-    final int LIMIT_GREEN = 13;
-    final int LIMIT_BLUE = 14;
+    // list of drawn colors for each game
+    ArrayList<Integer> reds = new ArrayList<>();
+    ArrayList<Integer> blues = new ArrayList<>();
+    ArrayList<Integer> greens = new ArrayList<>();
+    int sum = 0; // track the sum of "powers"
     try {
+      // set the input so that it reads ./day2-input.txt as the input (file omitted from repo), instead of the command prompt
       File file = new File("./day2-input.txt");
       Scanner scanner = new Scanner(file);
-      int sum = 0;
       // for each game
       while (scanner.hasNextLine()) {
+        // clear the lists
+        blues.clear();
+        reds.clear();
+        greens.clear();
         String line = scanner.nextLine();
         String gameName = line.split(":")[0];
         String gameResult = line.split(":")[1];
@@ -22,7 +31,6 @@ public class day2_part1 {
         List<String> gameRounds = Arrays.asList(gameResult.split(";"));
 
         // for each round
-        boolean isRoundValid = true;
         for (String round : gameRounds) {
           List<String> draws = Arrays.asList(round.split(", "));
 
@@ -31,24 +39,24 @@ public class day2_part1 {
             draw = draw.strip();
             int drawNumber = Integer.parseInt(draw.split(" ")[0]);
             String drawColor = draw.split(" ")[1];
-            if (drawColor.equals("red") && drawNumber > LIMIT_RED) {
-              isRoundValid = false;
-              break;
+            if (drawColor.equals("red")) {
+              reds.add(drawNumber);
             }
-            if (drawColor.equals("green") && drawNumber > LIMIT_GREEN) {
-              isRoundValid = false;
-              break;
+            if (drawColor.equals("green")) {
+              greens.add(drawNumber);
             }
-            if (drawColor.equals("blue") && drawNumber > LIMIT_BLUE) {
-              isRoundValid = false;
-              break;
+            if (drawColor.equals("blue")) {
+              blues.add(drawNumber);
             }
           }
         }
-        if (isRoundValid) sum += gameID;
+        int maxBlue = Collections.max(blues);
+        int maxRed = Collections.max(reds);
+        int maxGreen = Collections.max(greens);
+        sum += (maxBlue*maxRed*maxGreen);
       }
-      System.out.println(sum);
       scanner.close();
+      System.out.println(sum);
     } catch (FileNotFoundException e) {
       System.out.println("An error occurred.");
       e.printStackTrace();

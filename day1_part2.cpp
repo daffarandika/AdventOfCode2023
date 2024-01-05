@@ -1,5 +1,5 @@
 // ADVENT OF CODE 2023 DAY 1 PART 2
-// https://adventofcode.com/2023/day/1
+// https://adventofcode.com/2023/day/1#part2
 
 #include <iostream>
 #include <unordered_map>
@@ -7,7 +7,7 @@
 using std::unordered_map, std::cout, std::cin, std::string;
 
 int main () {
-  std::freopen("./day1-input.txt", "r", stdin); // set the input so that it accepts ./day1-input.txt as the input (file omitted from repo), instead of the command prompt
+  std::freopen("./day1-input.txt", "r", stdin); // set the input so that it reads ./day1-input.txt as the input (file omitted from repo), instead of the command prompt
    
   unordered_map<string, int> numbers; // map to store the value of each number and it's pronounciation
   numbers["one"] = 1;
